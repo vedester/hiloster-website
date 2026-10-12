@@ -1,6 +1,8 @@
 import Link from 'next/link';
 
 export function Footer() {
+  const currentYear = 2026; // Static or computed safely
+
   return (
     <footer className="border-t border-slate-800 bg-slate-950 text-slate-400 text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -42,7 +44,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
-        © {new Date().getFullYear()} Hiloster Technologies. All rights reserved.
+        © {currentYear} Hiloster Technologies. All rights reserved.
       </div>
     </footer>
   );

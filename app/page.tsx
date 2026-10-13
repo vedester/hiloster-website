@@ -339,7 +339,7 @@ export default function HomePage() {
               Get in Touch Now
             </Link>
             <a
-              href="https://wa.me/?text=Hello%20Hiloster%20Technologies,%20I%20would%20like%20to%20inquire%20about%20your%20services."
+              href="https://wa.me/254745389833?text=Hello%20Hiloster%20Technologies,%20I%20would%20like%20to%20inquire%20about%20your%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl transition-all shadow-lg shadow-emerald-600/20"

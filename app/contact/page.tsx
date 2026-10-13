@@ -1,4 +1,6 @@
 // app/contact/page.tsx
+
+
 'use client';
 
 import { useState, FormEvent } from 'react';
@@ -13,11 +15,42 @@ export default function ContactPage() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Simulate submission handling or integration with external email service
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "35e367be-0079-4b02-8e89-a7e3c18d89a3",
+          subject: `New Inquiry: ${formData.service} from ${formData.name}`,
+          from_name: "Hiloster Website",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        alert("Failed to send message. Please try again or reach us via WhatsApp.");
+      }
+    } catch (error) {
+      alert("An error occurred. Please check your internet connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const whatsappMessage = encodeURIComponent(
@@ -61,7 +94,7 @@ export default function ContactPage() {
                   <span className="text-blue-400 font-bold">✉️</span>
                   <div>
                     <h3 className="font-semibold text-white">Email Address</h3>
-                    <p className="text-slate-400">ihilostertechnologies@gmail.com</p>
+                    <p className="text-slate-400">hilostertechnologies@gmail.com</p>
                   </div>
                 </div>
 
@@ -78,7 +111,7 @@ export default function ContactPage() {
               <div className="pt-6 border-t border-slate-800">
                 <h3 className="text-sm font-semibold text-slate-300 mb-3">Prefer quick chat?</h3>
                 <a
-                  href={`https://wa.me/?text=${whatsappMessage}`}
+                  href={`https://wa.me/254745389833?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl text-sm transition-colors shadow-lg shadow-emerald-600/20"
@@ -184,9 +217,10 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 bg-blue-500 hover:bg-blue-400 text-slate-950 font-bold rounded-xl text-sm transition-colors"
+                  disabled={isSubmitting}
+                  className="w-full py-3.5 bg-blue-500 hover:bg-blue-400 disabled:bg-slate-700 text-slate-950 font-bold rounded-xl text-sm transition-colors"
                 >
-                  Send Inquiry
+                  {isSubmitting ? "Sending..." : "Send Inquiry"}
                 </button>
               </form>
             )}

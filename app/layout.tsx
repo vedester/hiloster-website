@@ -1,57 +1,44 @@
-// import type { Metadata } from 'next';
-// import { Inter } from 'next/font/google';
-// import './globals.css';
-// import { Navbar } from '@/components/navigation/Navbar';
-// import { Footer } from '@/components/layout/Footer';
+import type { Metadata } from "next";
+import "./globals.css";
 
-// const inter = Inter({ subsets: ['latin'] });
-
-// export const metadata: Metadata = {
-//   title: 'Hiloster Technologies | Web Development, Software & ICT Solutions',
-//   description: 'Official website of Hiloster Technologies. Expert web development, custom software systems, CCTV surveillance installation, and technical support.',
-// };
-
-// export default function RootLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   return (
-//     <html lang="en" className="dark">
-//       <body className={`${inter.className} bg-slate-950 text-slate-100 flex flex-col min-h-screen antialiased`}>
-//         <Navbar/>
-//         <div className="flex-grow">{children}</div>
-//         <Footer/>
-//       </body>
-//     </html>
-//   );
-// }
-
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import { Navbar } from '@/components/navigation/Navbar';
-import { Footer } from '@/components/layout/Footer';
-
-const inter = Inter({ subsets: ['latin'] });
+const siteUrl = "https://hiloster-website.vercel.app";
 
 export const metadata: Metadata = {
-  title: 'Hiloster Technologies | Web Development, Software & ICT Solutions',
-  description: 'Official website of Hiloster Technologies. Expert web development, custom software systems, CCTV surveillance installation, and technical support.',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Hiloster Technologies | Web Development & ICT Solutions Kenya",
+    template: "%s | Hiloster Technologies",
+  },
+  description:
+    "Hiloster Technologies builds professional websites, school management systems, custom software, mobile apps, CCTV installations and ICT infrastructure for institutions and businesses in Kenya.",
+  applicationName: "Hiloster Technologies",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "Hiloster Technologies",
+    title: "Hiloster Technologies | Smart Solutions. Stronger Impact.",
+    description:
+      "Web applications, digital systems, school platforms, CCTV installation and ICT solutions for businesses and institutions in Kenya.",
+    locale: "en_KE",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${inter.className} bg-slate-950 text-slate-100 flex flex-col min-h-screen antialiased`}>
-        <Navbar/>
-        <div className="flex-grow">{children}</div>
-        <Footer/>
-      </body>
+    <html lang="en-KE">
+      <body>{children}</body>
     </html>
   );
 }

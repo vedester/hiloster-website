@@ -1,355 +1,127 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { SERVICES } from '@/data/services';
-import { PROJECTS } from '@/data/projects';
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: 'Hiloster Technologies | Web Development, School Systems & ICT Solutions',
-  description: 'Official portal of Hiloster Technologies. Delivering custom software, school management portals, CCTV surveillance, and enterprise network infrastructure in Kenya.',
+export const metadata: Metadata = {
+  title: "Web Development, School Systems & ICT Solutions in Kenya",
+  description:
+    "Explore Hiloster Technologies services: websites, e-commerce, custom software, school administration platforms, Android apps, CCTV installation, networking and ICT support in Kenya.",
 };
 
-export default function HomePage() {
-  const featuredProjects = PROJECTS.filter((p) => p.featured);
+const services = [
+  { icon: "◎", title: "Professional Websites", text: "Responsive websites for companies, schools, organisations and professionals." },
+  { icon: "🛒", title: "E-commerce Platforms", text: "Online stores with product catalogues, enquiry flows and sales features tailored to your needs." },
+  { icon: "⌘", title: "Custom Web Applications", text: "Purpose-built web apps that help teams organise work and serve customers." },
+  { icon: "▤", title: "Content Management Systems", text: "Manage pages, news, events and updates without editing code." },
+  { icon: "♙", title: "Portals & Dashboards", text: "Role-based portals and dashboards for users, teams and administrators." },
+  { icon: "▱", title: "Document Management", text: "Organise digital records and document workflows around your requirements." },
+  { icon: "▦", title: "Booking & Enquiry Systems", text: "Make it easier for customers to request services, book appointments or send enquiries." },
+  { icon: "🎓", title: "School & Institution Systems", text: "Digital platforms for school information, student records and administrative workflows." },
+  { icon: "▣", title: "CCTV Installation", text: "CCTV camera installation, recording, remote viewing setup and maintenance." },
+  { icon: "</>", title: "Software Development", text: "Custom business systems, integrations, APIs and ongoing technical support." },
+  { icon: "▣", title: "Android Applications", text: "Mobile app experiences for business, education and service delivery." },
+  { icon: "☁", title: "ICT Solutions", text: "Networking, configuration, troubleshooting, hardware and software support." },
+];
+
+const packages = [
+  { name: "Essential Website", tag: "Online presence", desc: "A professional starting point for institutions and businesses.", features: ["Responsive website", "Essential pages", "Basic SEO setup", "Deployment and launch"] },
+  { name: "Complete Website", tag: "Recommended", desc: "A fuller public-facing website for organisations with more content.", features: ["Everything in Essential", "Departments, news and events", "Resource centre", "SEO and support options"] },
+  { name: "Website + CMS", tag: "Manage your content", desc: "For teams that need to update website content themselves.", features: ["Admin dashboard", "Content management", "Team roles and permissions", "Website content workflows"] },
+  { name: "School Admin Platform", tag: "Education", desc: "Custom school systems planned around the institution’s workflow.", features: ["Student records and portals", "Fees and synchronisation options", "Results management", "Custom modules as agreed"] },
+  { name: "Software Development", tag: "Custom-built", desc: "Software designed around your business processes.", features: ["Web applications", "Business systems", "API integration", "Ongoing support options"] },
+  { name: "Android & Applications", tag: "Mobile", desc: "Mobile applications to improve access and service delivery.", features: ["Business and e-learning apps", "Service applications", "UI/UX design", "Deployment assistance"] },
+  { name: "ICT Solutions", tag: "Infrastructure", desc: "Technical services for institutions, offices and business environments.", features: ["Network setup and configuration", "System maintenance", "IT support and consulting", "Hardware and software supply"] },
+  { name: "CCTV Installation", tag: "Security", desc: "Surveillance systems configured for your site and requirements.", features: ["Indoor and outdoor cameras", "Remote viewing setup", "Recording and storage", "Maintenance and support"] },
+];
+
+const projects = [
+  { name: "St. Josephine Bakhita Girls", detail: "Nyalienga Secondary School", url: "https://www.stjosephinebakhitagirls.sc.ke" },
+  { name: "St. Paul’s Rangwe Secondary School", detail: "Ligisa", url: "https://www.ligisa.sc.ke" },
+];
+
+const phone1 = "0706747884";
+const phone2 = "0745389833";
+const email = "hilostertechnologies@gmail.com";
+const whatsapp = "https://wa.me/254706747884?text=" + encodeURIComponent("Hello Hiloster Technologies, I would like to enquire about your services.");
+
+function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: string; text?: string }) {
+  return <div className="section-heading"><p className="eyebrow">{eyebrow}</p><h2>{title}</h2>{text && <p className="section-intro">{text}</p>}</div>;
+}
+
+export default function Home() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Hiloster Technologies",
+    url: "https://hiloster-website.vercel.app/",
+    email,
+    telephone: [phone1, phone2],
+    slogan: "Smart Solutions. Stronger Impact.",
+    description: "Web applications, digital systems, school platforms, CCTV installation and ICT solutions.",
+    address: { "@type": "PostalAddress", addressLocality: "Rangwe", addressCountry: "KE" },
+    areaServed: { "@type": "Country", name: "Kenya" },
+    knowsAbout: services.map((service) => service.title),
+  };
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-950 text-white selection:bg-blue-500 selection:text-white">
-      
-      {/* ------------------------------------------------------------- */}
-      {/* 1. HERO SECTION                                               */}
-      {/* ------------------------------------------------------------- */}
-      <section className="relative overflow-hidden py-24 lg:py-32 border-b border-slate-800/60">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+    <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+      <div className="top-strip"><div className="container top-inner"><span>📍 Rangwe, Kenya</span><span>Smart Solutions. Stronger Impact.</span><a href={`mailto:${email}`}>{email}</a></div></div>
+      <header className="site-header">
+        <div className="container nav">
+          <a className="brand" href="#home" aria-label="Hiloster Technologies homepage">
+            <span className="brand-mark">H</span><span><strong>HiloSter</strong><small>TECHNOLOGIES</small><em>Web Applications & Digital Systems</em></span>
+          </a>
+          <nav aria-label="Main navigation">
+            <a href="#services">Services</a><a href="#solutions">Solutions</a><a href="#projects">Portfolio</a><a href="#why-us">About</a><a href="#contact">Contact</a>
+          </nav>
+          <a className="button button-small" href={whatsapp} target="_blank" rel="noreferrer">Get a Quote <span>↗</span></a>
+        </div>
+      </header>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold mb-8">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-            Engineering Modern Digital Solutions & ICT Infrastructure
+      <section className="hero" id="home">
+        <div className="container hero-grid">
+          <div className="hero-copy">
+            <div className="pill"><span className="pulse" /> DIGITAL SOLUTIONS FOR REAL-WORLD NEEDS</div>
+            <h1>We build digital solutions <span>that grow your vision.</span></h1>
+            <p className="hero-lead">We design and develop professional websites, web applications, mobile apps, software solutions and ICT systems that help businesses, institutions and organisations work smarter and serve better.</p>
+            <div className="hero-actions"><a className="button" href="#contact">Let’s discuss your project <span>↗</span></a><a className="button button-ghost" href="#projects">Explore our work</a></div>
+            <div className="hero-proof"><span>✓ Mobile responsive</span><span>✓ Secure by design</span><span>✓ Built around your needs</span></div>
           </div>
-
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-tight">
-            Software Systems, Web Portals & <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">CCTV Infrastructure</span>
-          </h1>
-
-          <p className="mt-6 text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Hiloster Technologies delivers high-performance web platforms, custom institutional management systems, IP surveillance setups, and enterprise network support across Kenya.
-          </p>
-
-          {/* Interactive CTA Button Cluster */}
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="w-full sm:w-auto px-8 py-4 text-sm font-bold text-slate-950 bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-blue-300 hover:to-cyan-300 rounded-xl transition-all duration-200 shadow-xl shadow-blue-500/20"
-            >
-              Request a Consultation & Quote →
-            </Link>
-            <Link
-              href="/projects"
-              className="w-full sm:w-auto px-8 py-4 text-sm font-semibold text-slate-200 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl transition-all duration-200"
-            >
-              Explore Our Deployments
-            </Link>
+          <div className="hero-visual">
+            <div className="visual-glow" />
+            <div className="dashboard-window">
+              <div className="window-bar"><span></span><span></span><span></span><b>HiloSter Digital</b></div>
+              <div className="dashboard-content"><div className="mini-brand">H <b>Hiloster</b><small>Technologies</small></div><div className="dashboard-banner"><span>Digital tools.<br/><b>Stronger outcomes.</b></span><div className="banner-orbit">✦</div></div><div className="metric-grid"><div><strong>Web</strong><small>Development</small></div><div><strong>School</strong><small>Platforms</small></div><div><strong>ICT</strong><small>Solutions</small></div></div><div className="chart"><span style={{height:"35%"}}></span><span style={{height:"55%"}}></span><span style={{height:"43%"}}></span><span style={{height:"74%"}}></span><span style={{height:"62%"}}></span><span style={{height:"92%"}}></span><span style={{height:"80%"}}></span></div></div>
+            </div>
+            <div className="floating-card floating-top"><span className="float-icon">⌘</span><span><b>Smart systems</b><small>Designed for your workflow</small></span></div>
+            <div className="floating-card floating-bottom"><span className="float-icon">✓</span><span><b>Reliable ICT support</b><small>From planning to deployment</small></span></div>
           </div>
+        </div>
+        <div className="hero-bottom"><div className="container hero-bottom-inner"><span>WE BUILD</span><div className="hero-bottom-line"></div><strong>Websites <i>•</i> Software <i>•</i> School Systems <i>•</i> ICT Infrastructure</strong></div></div>
+      </section>
 
-          {/* Trust Metrics Bar */}
-          <div className="mt-16 pt-12 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div>
-              <div className="text-3xl sm:text-4xl font-extrabold text-blue-400">100%</div>
-              <div className="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Custom Code & Systems</div>
-            </div>
-            <div>
-              <div className="text-3xl sm:text-4xl font-extrabold text-cyan-400">24/7</div>
-              <div className="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">System Reliability & Support</div>
-            </div>
-            <div>
-              <div className="text-3xl sm:text-4xl font-extrabold text-blue-400">Full-Stack</div>
-              <div className="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Web & Mobile Architecture</div>
-            </div>
-            <div>
-              <div className="text-3xl sm:text-4xl font-extrabold text-cyan-400">HD IP</div>
-              <div className="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Surveillance & NVR Specs</div>
-            </div>
-          </div>
+      <section className="services section" id="services">
+        <div className="container"><SectionHeading eyebrow="WHAT WE BUILD" title="Digital services for every need" text="Practical technology services to help your organisation connect with people, manage work and grow with confidence." />
+          <div className="service-grid">{services.map((s) => <article className="service-card" key={s.title}><div className="service-icon">{s.icon}</div><h3>{s.title}</h3><p>{s.text}</p><a href="#contact" aria-label={`Enquire about ${s.title}`}>Discuss this service <span>↗</span></a></article>)}</div>
         </div>
       </section>
 
-      {/* ------------------------------------------------------------- */}
-      {/* 2. SERVICES OVERVIEW (INTERACTIVE CARDS)                     */}
-      {/* ------------------------------------------------------------- */}
-      <section className="py-24 bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-2 block">
-                What We Offer
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-                Core ICT & Engineering Capabilities
-              </h2>
-            </div>
-            <Link
-              href="/services"
-              className="text-sm font-bold text-blue-400 hover:text-blue-300 inline-flex items-center gap-1 shrink-0"
-            >
-              View All Specifications & Pricing Models →
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {SERVICES.map((service) => (
-              <div
-                key={service.id}
-                className="group bg-slate-900/60 border border-slate-800 hover:border-blue-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300"
-              >
-                <div>
-                  <div className="relative h-40 w-full mb-6 overflow-hidden rounded-xl border border-slate-800">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-80"
-                    />
-                  </div>
-
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-wider mb-3 inline-block">
-                    {service.category}
-                  </span>
-
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-slate-400 text-xs leading-relaxed mb-6">
-                    {service.shortDescription}
-                  </p>
-                </div>
-
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="pt-4 border-t border-slate-800/80 text-xs font-semibold text-blue-400 group-hover:text-blue-300 inline-flex items-center gap-1"
-                >
-                  Explore Details →
-                </Link>
-              </div>
-            ))}
-          </div>
-
+      <section className="solutions section" id="solutions">
+        <div className="container"><SectionHeading eyebrow="SOLUTIONS FOR EVERY NEED" title="Choose the right starting point" text="Every project is different. We scope each solution with you and confirm the features, timeline and final price before work begins." />
+          <div className="package-grid">{packages.map((p, i) => <article className={`package-card ${i === 1 ? "featured" : ""}`} key={p.name}><div className="package-top"><span className="package-icon">{["▣","✦","▤","⌂","⌘","▣","☁","◉"][i]}</span>{i === 1 && <span className="recommended">POPULAR OPTION</span>}</div><p className="package-tag">{p.tag}</p><h3>{p.name}</h3><p className="package-desc">{p.desc}</p><ul>{p.features.map((f) => <li key={f}><span>✓</span>{f}</li>)}</ul><a className="package-link" href={`${whatsapp}&package=${encodeURIComponent(p.name)}`}>Request a quote <span>↗</span></a></article>)}</div>
+          <p className="pricing-note"><span>ⓘ</span> Prices are provided after consultation and are based on your requirements, selected modules, integrations and support needs. Any starting prices advertised are indicative, not final quotations.</p>
         </div>
       </section>
 
-      {/* ------------------------------------------------------------- */}
-      {/* 3. FEATURED PROJECTS / PROOF SECTION                          */}
-      {/* ------------------------------------------------------------- */}
-      <section className="py-24 bg-slate-900/40 border-y border-slate-800/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-2 block">
-              Proven Track Record
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Deployed Systems & Web Platforms
-            </h2>
-            <p className="mt-4 text-slate-400 text-sm">
-              Explore live platforms built and maintained for schools, healthcare providers, and organizations.
-            </p>
-          </div>
+      <section className="why section" id="why-us"><div className="container why-grid"><div><SectionHeading eyebrow="WHY WORK WITH US?" title="Technology built around your goals" text="We combine practical technical delivery with clear communication, helping you choose a solution that fits your organisation and users."/><a className="button" href={whatsapp} target="_blank" rel="noreferrer">Talk to our team <span>↗</span></a></div><div className="benefit-grid"><div className="benefit"><span>▣</span><h3>Mobile responsive</h3><p>Experiences designed for phones, tablets and computers.</p></div><div className="benefit"><span>ϟ</span><h3>Performance minded</h3><p>Thoughtful implementation with speed and usability in mind.</p></div><div className="benefit"><span>♢</span><h3>Security conscious</h3><p>Security practices considered throughout delivery.</p></div><div className="benefit"><span>⌕</span><h3>SEO foundations</h3><p>Clear structure and metadata to help search engines understand your pages.</p></div><div className="benefit"><span>↗</span><h3>Scalable approach</h3><p>Plan features and improvements around changing needs.</p></div><div className="benefit"><span>♡</span><h3>Training & support</h3><p>Support and handover options can be agreed for your project.</p></div></div></div></section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {featuredProjects.map((project) => (
-              <div
-                key={project.id}
-                className="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col justify-between hover:border-blue-500/40 transition-colors"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                      {project.clientType}
-                    </span>
-                    <Link
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs text-slate-400 hover:text-blue-400 inline-flex items-center gap-1"
-                    >
-                      Visit Live Site ↗
-                    </Link>
-                  </div>
+      <section className="projects section" id="projects"><div className="container"><SectionHeading eyebrow="SELECTED WORK" title="Projects and live demonstrations" text="Explore selected school website projects. Contact us to discuss a similar platform or request a demonstration."/><div className="project-grid">{projects.map((p, i) => <article className="project-card" key={p.name}><div className={`project-art project-art-${i+1}`}><div className="school-crest">H</div><div className="school-lines"><span></span><span></span><span></span></div><div className="project-art-caption">SCHOOL WEBSITE <span>↗</span></div></div><div className="project-body"><p className="project-label">EDUCATION WEBSITE</p><h3>{p.name}</h3><p>{p.detail}</p><a href={p.url} target="_blank" rel="noreferrer">Visit live website <span>↗</span></a></div></article>)}</div><p className="project-disclaimer">Project names and links are shown as supplied. Confirm that each URL is current and that you have permission to display client names, logos and screenshots before publishing.</p></div></section>
 
-                  <h3 className="text-2xl font-bold text-white mb-3">
-                    {project.title}
-                  </h3>
+      <section className="cta-band"><div className="container cta-inner"><div><p className="eyebrow">LET’S BUILD SOMETHING GREAT</p><h2>Have an idea? Let’s turn it into a useful digital solution.</h2><p>Tell us what you need. We’ll discuss your goals and the next steps.</p></div><a className="button button-light" href={whatsapp} target="_blank" rel="noreferrer">Start a conversation <span>↗</span></a></div></section>
 
-                  <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                    {project.description}
-                  </p>
+      <section className="contact section" id="contact"><div className="container contact-grid"><div><SectionHeading eyebrow="GET IN TOUCH" title="Let’s discuss your project" text="Contact Hiloster Technologies for a consultation, demonstration or quotation. Share your requirements and we’ll help identify a practical next step."/><div className="contact-list"><a href={`tel:+254${phone1.slice(1)}`}><span className="contact-icon">☎</span><span><small>Call us</small><b>{phone1} / {phone2}</b></span></a><a href={`mailto:${email}`}><span className="contact-icon">✉</span><span><small>Email</small><b>{email}</b></span></a><div><span className="contact-icon">⌖</span><span><small>Location</small><b>Rangwe, Kenya</b></span></div></div></div><form className="contact-form" action={`https://formsubmit.co/${email}`} method="POST"><h3>Send an enquiry</h3><p>Fill in your details and your email app or form service can route your request to our team.</p><input type="hidden" name="_subject" value="New Hiloster Technologies website enquiry"/><input type="hidden" name="_template" value="table"/><label htmlFor="name">Your name</label><input id="name" name="name" placeholder="Full name" required/><label htmlFor="visitor-email">Email address</label><input id="visitor-email" name="email" type="email" placeholder="you@example.com" required/><label htmlFor="service">What do you need?</label><select id="service" name="service" defaultValue="" required><option value="" disabled>Select a service</option>{services.map((s)=><option key={s.title}>{s.title}</option>)}</select><label htmlFor="message">Project details</label><textarea id="message" name="message" rows={4} placeholder="Tell us briefly about your project..." required/><button className="button form-button" type="submit">Send enquiry <span>↗</span></button><small className="form-note">FormSubmit may require an initial email activation. Test the form before relying on it in production.</small></form></div></section>
 
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {project.tech.map((t, idx) => (
-                      <span
-                        key={idx}
-                        className="text-xs bg-slate-950 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-md"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="text-xs font-semibold text-blue-400 hover:text-blue-300 inline-flex items-center gap-1"
-                  >
-                    Read Case Study →
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <Link
-              href="/projects"
-              className="inline-flex items-center justify-center px-6 py-3 border border-slate-700 hover:border-slate-500 rounded-xl text-sm font-semibold text-slate-200 hover:text-white bg-slate-900 transition-colors"
-            >
-              View Full Portfolio & Code Repositories
-            </Link>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------------- */}
-      {/* 4. WHY CHOOSE HILOSTER (TRUST FACTORS)                        */}
-      {/* ------------------------------------------------------------- */}
-      <section className="py-24 bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-2 block">
-                Why Hiloster Technologies
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-6">
-                Engineered for Reliability, Scalability, & Security
-              </h2>
-              <p className="text-slate-300 text-sm leading-relaxed mb-8">
-                We combine deep technical expertise in modern full-stack web software with hands-on physical ICT infrastructure deployment.
-              </p>
-
-              <div className="space-y-4">
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold shrink-0">
-                    01
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold text-sm">First-Principles Software Development</h4>
-                    <p className="text-slate-400 text-xs mt-1">
-                      No bloated templates. We architect clean Next.js, React, and MySQL database platforms tailored to your operational requirements.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold shrink-0">
-                    02
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold text-sm">Hardware & Network Expertise</h4>
-                    <p className="text-slate-400 text-xs mt-1">
-                      Professional IP CCTV installations (Dome, Bullet, Solar PTZ) and structured Cat6 UTP network cabling for schools and commercial buildings.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold shrink-0">
-                    03
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold text-sm">Dedicated On-Site & Remote Support</h4>
-                    <p className="text-slate-400 text-xs mt-1">
-                      Prompt assistance, static IP printer configuration, system backups, and regular security audits.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-blue-900/30 via-slate-900 to-slate-950 border border-slate-800 p-8 sm:p-12 rounded-3xl space-y-6">
-              <h3 className="text-2xl font-bold text-white">How We Work with Clients</h3>
-              
-              <div className="space-y-6 text-sm text-slate-300">
-                <div className="border-l-2 border-blue-500 pl-4">
-                  <span className="text-xs font-semibold text-blue-400 uppercase">Phase 1</span>
-                  <h4 className="font-bold text-white">Consultation & Needs Assessment</h4>
-                  <p className="text-xs text-slate-400 mt-1">Understanding your school or business workflows, security needs, or system specifications.</p>
-                </div>
-
-                <div className="border-l-2 border-cyan-500 pl-4">
-                  <span className="text-xs font-semibold text-cyan-400 uppercase">Phase 2</span>
-                  <h4 className="font-bold text-white">Architecture & Proposal</h4>
-                  <p className="text-xs text-slate-400 mt-1">Clear technical proposal, equipment specifications, transparent cost breakdown, and timeline.</p>
-                </div>
-
-                <div className="border-l-2 border-blue-500 pl-4">
-                  <span className="text-xs font-semibold text-blue-400 uppercase">Phase 3</span>
-                  <h4 className="font-bold text-white">Development & Deployment</h4>
-                  <p className="text-xs text-slate-400 mt-1">Building software applications or physically deploying CCTV cameras and network infrastructure.</p>
-                </div>
-
-                <div className="border-l-2 border-cyan-500 pl-4">
-                  <span className="text-xs font-semibold text-cyan-400 uppercase">Phase 4</span>
-                  <h4 className="font-bold text-white">Training & Maintenance</h4>
-                  <p className="text-xs text-slate-400 mt-1">Staff onboarding, documentation handover, and ongoing technical support.</p>
-                </div>
-              </div>
-
-              <div className="pt-4">
-                <Link
-                  href="/about"
-                  className="text-xs font-bold text-blue-400 hover:text-blue-300 inline-flex items-center gap-1"
-                >
-                  Learn More About Hiloster Technologies →
-                </Link>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------------- */}
-      {/* 5. FINAL CALL TO ACTION                                      */}
-      {/* ------------------------------------------------------------- */}
-      <section className="py-20 bg-gradient-to-r from-blue-950/60 via-slate-950 to-blue-950/60 border-t border-slate-800">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Ready to Upgrade Your Web Platform or ICT Infrastructure?
-          </h2>
-          <p className="text-slate-300 text-base max-w-2xl mx-auto">
-            Contact our engineering team today to discuss your website, school management portal, or CCTV security setup.
-          </p>
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="w-full sm:w-auto px-8 py-4 text-sm font-bold text-slate-950 bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-blue-300 hover:to-cyan-300 rounded-xl transition-all shadow-xl shadow-blue-500/20"
-            >
-              Get in Touch Now
-            </Link>
-            <a
-              href="https://wa.me/254745389833?text=Hello%20Hiloster%20Technologies,%20I%20would%20like%20to%20inquire%20about%20your%20services."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl transition-all shadow-lg shadow-emerald-600/20"
-            >
-              Chat on WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
-
-    </div>
+      <footer className="footer"><div className="container footer-main"><a className="brand footer-brand" href="#home"><span className="brand-mark">H</span><span><strong>HiloSter</strong><small>TECHNOLOGIES</small><em>Web Applications & Digital Systems</em></span></a><p>Smart solutions. Stronger impact.</p><div className="footer-links"><a href="#services">Services</a><a href="#solutions">Solutions</a><a href="#projects">Portfolio</a><a href="#contact">Contact</a></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} Hiloster Technologies. All rights reserved.</span><span>Your vision, our expertise. Powerful digital solutions.</span></div></footer>
+      <a className="whatsapp-float" href={whatsapp} target="_blank" rel="noreferrer" aria-label="Contact Hiloster Technologies on WhatsApp">✆</a>
+    </main>
   );
 }

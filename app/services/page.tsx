@@ -29,7 +29,8 @@ export default function ServicesPage() {
                 <p className="text-slate-400 text-sm leading-relaxed mb-6">{service.shortDescription}</p>
               </div>
 
-              <Link className="inline-flex items-center text-sm font-semibold text-blue-400 hover:text-blue-300" href="{`/services/${service.slug}`}">
+              <Link className="inline-flex items-center text-sm font-semibold text-blue-400 hover:text-blue-300" href={`
+/services/${service.slug}`}>
                 View Details & Specs →
               </Link>
             </div>

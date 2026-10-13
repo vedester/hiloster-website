@@ -61,7 +61,7 @@ export default function ContactPage() {
                   <span className="text-blue-400 font-bold">✉️</span>
                   <div>
                     <h3 className="font-semibold text-white">Email Address</h3>
-                    <p className="text-slate-400">info@hiloster.com</p>
+                    <p className="text-slate-400">ihilostertechnologies@gmail.com</p>
                   </div>
                 </div>
 
@@ -146,7 +146,7 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 text-sm focus:outline-none focus:border-blue-500"
-                      placeholder="+254 700 000 000"
+                      placeholder="+254 745 389 833"
                     />
                   </div>
                 </div>

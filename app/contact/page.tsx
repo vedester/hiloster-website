@@ -86,7 +86,7 @@ export default function ContactPage() {
                   <span className="text-blue-400 font-bold">📍</span>
                   <div>
                     <h3 className="font-semibold text-white">Office Location</h3>
-                    <p className="text-slate-400">Nairobi / Kiambu / Western Kenya Operations</p>
+                    <p className="text-slate-400">Mombasa / Nairobi / Nakuru / Kiambu / Western Kenya Operations</p>
                   </div>
                 </div>
 

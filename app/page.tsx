@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Web Development, School Systems & ICT Solutions in Kenya",
@@ -75,6 +76,16 @@ export default function Home() {
           </nav>
           <a className="button button-small" href={whatsapp} target="_blank" rel="noreferrer">Get a Quote <span>↗</span></a>
         </div>
+        <div className="hero-image">
+  <Image
+    src="/images/hiloster-hero.jpeg"
+    alt="Hiloster Technologies — web development, ICT solutions and CCTV installation"
+    width={1200}
+    height={800}
+    priority
+    className="hero-image-content"
+  />
+</div>
       </header>
 
       <section className="hero" id="home">

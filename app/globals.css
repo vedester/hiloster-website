@@ -4,3 +4,16 @@
 @media(max-width:760px){.container{width:min(100% - 30px,600px)}.top-inner{padding:8px 0;flex-wrap:wrap;justify-content:center;gap:5px 14px}.top-inner>span:nth-child(2){display:none}.nav{min-height:72px;flex-wrap:wrap;padding:12px 0}.brand-mark{width:39px;height:39px;font-size:24px}.brand strong{font-size:21px}.brand small{font-size:8px}.nav nav{order:3;width:100%;overflow:auto;padding:7px 0 2px;gap:20px}.nav nav a{white-space:nowrap}.button-small{font-size:11px;padding:10px}.hero{padding-top:45px}.hero-grid{grid-template-columns:1fr;padding-bottom:50px}.hero h1{font-size:47px;letter-spacing:-2.3px}.hero-lead{font-size:15px}.hero-visual{min-height:350px;margin-top:8px}.dashboard-window{width:90%}.dashboard-banner{min-height:115px;font-size:17px}.banner-orbit{width:66px;height:66px;font-size:29px}.floating-top{top:7px;right:-2px}.floating-bottom{bottom:13px;left:-3px}.floating-card{padding:9px 11px}.float-icon{width:30px;height:30px}.floating-card b{font-size:10px}.floating-card small{font-size:8px}.hero-bottom-inner{padding:16px 0;min-height:auto;flex-wrap:wrap;gap:8px}.hero-bottom-line{display:none}.hero-bottom-inner strong{width:100%;font-size:11px}.section{padding:64px 0}.section-heading h2,.cta-inner h2{font-size:34px}.service-grid{gap:10px}.service-card{padding:16px 13px}.service-card h3{font-size:13px}.service-card p{font-size:11px;min-height:90px}.service-card>a{font-size:10px}.package-grid{gap:10px}.package-card{padding:16px 13px;min-height:0}.package-card h3{font-size:15px}.package-desc{min-height:82px}.package-card li{font-size:10px}.recommended{font-size:7px}.why-grid,.contact-grid{grid-template-columns:1fr;gap:35px}.benefit-grid{gap:10px}.benefit{padding:15px}.project-grid{grid-template-columns:1fr}.cta-inner{align-items:flex-start;flex-direction:column}.contact-form{padding:21px}.footer-main{align-items:flex-start;flex-direction:column}.footer-links{flex-wrap:wrap}.footer-bottom{flex-direction:column;gap:5px}}
 @media(max-width:390px){.hero h1{font-size:40px}.service-grid,.package-grid{grid-template-columns:1fr}.service-card p,.package-desc{min-height:0}.hero-actions .button{width:100%}.hero-proof{gap:9px}.hero-visual{min-height:300px}.floating-card{max-width:205px}.top-inner{font-size:10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+.hero-image {
+  width: 100%;
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+.hero-image-content {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+}

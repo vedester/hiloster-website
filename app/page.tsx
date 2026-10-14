@@ -35,7 +35,7 @@ const packages = [
 
 const projects = [
   { name: "St. Josephine Bakhita Girls", detail: "Nyalienga Secondary School", url: "https://www.stjosephinebakhitagirls.sc.ke" },
-  { name: "St. Paul’s Rangwe Secondary School", detail: "Ligisa", url: "https://www.ligisa.sc.ke" },
+  { name: "St. Paul’s Secondary School", detail: "Ligisa", url: "https://www.ligisa.sc.ke" },
 ];
 
 const phone1 = "0706747884";
@@ -76,16 +76,6 @@ export default function Home() {
           </nav>
           <a className="button button-small" href={whatsapp} target="_blank" rel="noreferrer">Get a Quote <span>↗</span></a>
         </div>
-        <div className="hero-image">
-  <Image
-    src="/images/hiloster-hero.jpeg"
-    alt="Hiloster Technologies — web development, ICT solutions and CCTV installation"
-    width={1200}
-    height={800}
-    priority
-    className="hero-image-content"
-  />
-</div>
       </header>
 
       <section className="hero" id="home">
@@ -98,14 +88,21 @@ export default function Home() {
             <div className="hero-proof"><span>✓ Mobile responsive</span><span>✓ Secure by design</span><span>✓ Built around your needs</span></div>
           </div>
           <div className="hero-visual">
-            <div className="visual-glow" />
+            <div className="hero-image">
+            <Image
+      src="/images/hiloster-hero.jpeg"
+      alt="Hiloster Technologies — web development, CCTV installation, education and ICT solutions"
+      width={1200}
+      height={800}
+      priority
+      className="hero-image-content"
+     />
+  </div>
+</div>
             <div className="dashboard-window">
               <div className="window-bar"><span></span><span></span><span></span><b>HiloSter Digital</b></div>
               <div className="dashboard-content"><div className="mini-brand">H <b>Hiloster</b><small>Technologies</small></div><div className="dashboard-banner"><span>Digital tools.<br/><b>Stronger outcomes.</b></span><div className="banner-orbit">✦</div></div><div className="metric-grid"><div><strong>Web</strong><small>Development</small></div><div><strong>School</strong><small>Platforms</small></div><div><strong>ICT</strong><small>Solutions</small></div></div><div className="chart"><span style={{height:"35%"}}></span><span style={{height:"55%"}}></span><span style={{height:"43%"}}></span><span style={{height:"74%"}}></span><span style={{height:"62%"}}></span><span style={{height:"92%"}}></span><span style={{height:"80%"}}></span></div></div>
             </div>
-            <div className="floating-card floating-top"><span className="float-icon">⌘</span><span><b>Smart systems</b><small>Designed for your workflow</small></span></div>
-            <div className="floating-card floating-bottom"><span className="float-icon">✓</span><span><b>Reliable ICT support</b><small>From planning to deployment</small></span></div>
-          </div>
         </div>
         <div className="hero-bottom"><div className="container hero-bottom-inner"><span>WE BUILD</span><div className="hero-bottom-line"></div><strong>Websites <i>•</i> Software <i>•</i> School Systems <i>•</i> ICT Infrastructure</strong></div></div>
       </section>

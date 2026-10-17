@@ -436,11 +436,11 @@ export default function Home() {
 
             {/* Interactive Form */}
             <div className="lg:col-span-7">
-              <form
-                action={`[https://formsubmit.co/$](https://formsubmit.co/$){contactInfo.email}`}
-                method="POST"
-                className="p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-4 transition-colors duration-300"
-              >
+             <form
+              action={`https://formsubmit.co/${contactInfo.email}`}
+              method="POST"
+              className="p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-4 transition-colors duration-300"
+            >
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white">Send an enquiry</h3>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

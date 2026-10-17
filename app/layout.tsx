@@ -1,4 +1,9 @@
+// app/layout.tsx
 import type { Metadata } from "next";
+import { Navbar } from "@/components/navigation/Navbar";
+import { Footer } from "@/components/layout/Footer";  
+import { StructuredData } from "@/components/StructuredData";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import "./globals.css";
 
 const siteUrl = "https://hiloster-website.vercel.app";
@@ -37,8 +42,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-KE">
-      <body>{children}</body>
+    <html lang="en-KE" suppressHydrationWarning>
+      <body className="antialiased selection:bg-emerald-500 selection:text-white">
+        <ThemeProvider>
+          <div className="ambient-glow-top" />
+          <Navbar />
+          <div className="relative z-10">{children}</div>
+          <Footer /> {/* Kept safely inside body */}
+          <StructuredData/>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

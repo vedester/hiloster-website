@@ -64,7 +64,7 @@ export default function Home() {
     telephone: [contactInfo.phone1, contactInfo.phone2],
     slogan: "Smart Solutions. Stronger Impact.",
     description: "Web applications, digital systems, school platforms, CCTV installation and ICT solutions.",
-    address: { "@type": "PostalAddress", addressLocality: "Rangwe", addressCountry: "KE" },
+    address: { "@type": "PostalAddress", addressLocality: "Nairobi", addressCountry: "KE" },
     areaServed: { "@type": "Country", name: "Kenya" },
     knowsAbout: services.map((s) => s.title),
   };
@@ -73,11 +73,11 @@ export default function Home() {
     <main className="relative min-h-screen transition-colors duration-300">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
-      {/* Top Banner Strip */}
+      {/* Top Banner Strip after the Navabar*/}
       <div className="bg-slate-100 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 py-2.5 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-2">
           <div className="flex items-center space-x-4">
-            <span>📍 Rangwe, Kenya</span>
+            <span>📍 Nairobi, Kenya</span>
             <span className="hidden sm:inline text-slate-300 dark:text-slate-700">|</span>
             <span className="hidden sm:inline font-medium text-slate-700 dark:text-slate-300">Smart Solutions. Stronger Impact.</span>
           </div>
